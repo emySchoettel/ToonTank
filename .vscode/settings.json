@@ -1,0 +1,11 @@
+{
+	"files.exclude": {
+		"E:/Ludus_projets/ToonTanks/.git": true,
+		"E:/Ludus_projets/ToonTanks/.vs": true,
+		"E:/Ludus_projets/ToonTanks/.vscode": true,
+		"E:/Ludus_projets/ToonTanks/Content": true,
+		"E:/Ludus_projets/ToonTanks/DerivedDataCache": true,
+		"E:/Ludus_projets/ToonTanks/Intermediate": true,
+		"E:/Ludus_projets/ToonTanks/Saved": true
+	}
+}
