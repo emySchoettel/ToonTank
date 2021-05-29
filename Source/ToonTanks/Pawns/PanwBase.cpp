@@ -32,6 +32,7 @@ void APanwBase::RotateTurret(FVector LookAtTarget)
 	FRotator TurretRotation = FVector(FVector(LookAtTargetCleaned - StartLocation)).Rotation();
 
 	TurretMesh->SetWorldRotation(TurretRotation);
+	UE_LOG(LogTemp, Warning, TEXT("Turned"));
 
 }
 

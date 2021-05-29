@@ -21,6 +21,8 @@ class TOONTANKS_API APawnTank : public APanwBase
 		UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 		UCameraComponent* Camera; 
 
+		APlayerController* PlayerControllerRef; 
+
 		FVector MoveDirection; 
 		FQuat RotationDirection; 
 		UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movement", meta = (AllowPrivateAccess = "true" ))
@@ -44,22 +46,11 @@ class TOONTANKS_API APawnTank : public APanwBase
 		// Called to bind functionality to input
 		virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
-		// UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "DEMO")
-		// int VisibleAnywhere;
-		// UPROPERTY(VisibleDefaultsOnly, Category = "DEMO")
-		// int VisibleDefaultsOnly; 
-		// UPROPERTY(VisibleInstanceOnly, Category = "DEMO")
-		// int VisibleInstanceOnly;
-		// UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "DEMO")
-		// int EditAnywhere; 
-		// UPROPERTY(EditDefaultsOnly, Category = "DEMO")
-		// int EditDefaultsOnly;
-		// UPROPERTY(EditInstanceOnly, Category ="DEMO")
-		// int EditInstanceOnly; 
-
 	protected:
 		// Called when the game starts or when spawned
 		virtual void BeginPlay() override;
+
+		virtual void HandleDestruction() override; 
 
 	
 };

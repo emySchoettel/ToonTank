@@ -16,6 +16,13 @@ void APawnTurret::BeginPlay()
     	
 }
 
+void APawnTurret::HandleDestruction() 
+{
+    //Call base pawn class HandleDestruction to play effects 
+    Super::HandleDestruction();
+    Destroy();
+}
+
 // Called every frame
 void APawnTurret::Tick(float DeltaTime)
 {
@@ -25,7 +32,7 @@ void APawnTurret::Tick(float DeltaTime)
         return; 
     }
 
-    RotateTurret(PlayerTank->GetActorLocation());
+    Super::RotateTurret(PlayerTank->GetActorLocation());
 }
 
 void APawnTurret::CheckFireCondition() 
