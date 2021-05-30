@@ -20,11 +20,12 @@ class TOONTANKS_API ATankGameModeBase : public AGameModeBase
 	public : 
 
 		void ActorDied(AActor* DeadActor);
+		virtual void Tick(float DeltaTime) override;
 
 	protected : 
 
 		virtual void BeginPlay() override; 
-		
+
 		UFUNCTION(BlueprintImplementableEvent)
 		void GameStart(); 
 		UFUNCTION(BlueprintImplementableEvent)

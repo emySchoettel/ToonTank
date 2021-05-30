@@ -26,15 +26,17 @@ void UHealthComponent::BeginPlay()
 	GetOwner()->OnTakeAnyDamage.AddDynamic(this, &UHealthComponent::TakeDamage);
 }
 
-void UHealthComponent::TakeDamage(AActor* DamagedActor, float Damage, const UDamageType*, AController* InstigatedBy, AActor DamageCauser) 
+void UHealthComponent::TakeDamage(AActor * damagedActor, float damage, const UDamageType * damageType, AController * instigatedBy, AActor * damageCauser) 
 {
-	if(Damage == 0)
+	UE_LOG(LogTemp, Warning, TEXT("Damage"));
+	if(damage == 0 || Health <= 0)
 	{
 		return; 	
 	}
 
-	Health = FMath::Clam(Health - Damage, 0.0f, DefaultHealth);
-	if(Health <= 0)	{
+	Health = FMath::Clamp(Health - damage, 0.0f, DefaultHealth);
+	if(Health <= 0)	
+	{
 		if(GameModeRef)
 		{
 			GameModeRef->ActorDied(GetOwner());

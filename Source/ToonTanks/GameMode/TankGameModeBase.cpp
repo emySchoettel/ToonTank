@@ -5,13 +5,20 @@
 
 void ATankGameModeBase::BeginPlay() 
 {
-    
+    Super::BeginPlay(); 
+    HandleGameStart();
 }
 
 void ATankGameModeBase::ActorDied(AActor* DeadActor) 
 {
-    			UE_LOG(LogTemp, Warning, TEXT("A pawn died"));
+    UE_LOG(LogTemp, Warning, TEXT("A pawn died"));
 }
+
+void ATankGameModeBase::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+}
+
 
 
 void ATankGameModeBase::HandleGameStart() 
