@@ -3,6 +3,7 @@
 #include "PanwBase.h"
 #include "Components/CapsuleComponent.h"
 #include "Kismet/KismetMathLibrary.h"
+#include "ToonTanks/Actors/ProjectileBase.h"
 
 // Sets default values
 APanwBase::APanwBase()
@@ -40,7 +41,15 @@ void APanwBase::RotateTurret(FVector LookAtTarget)
 void APanwBase::Fire() 
 {
 	//Get ProjectileSpawnPoint Location && Rotation -> Spawn Projectile class at Location firing towards Rotation
-	UE_LOG(LogTemp, Warning, TEXT("Fire Condition Success"));
+	if(ProjectileClass)
+	{
+		FVector SpawnLocation = ProjectileSpawnPoint->GetComponentLocation();
+		FRotator SpawnRotation = ProjectileSpawnPoint->GetComponentRotation();
+		AProjectileBase* tempProjectile = GetWorld()->SpawnActor<AProjectileBase>(ProjectileClass, SpawnLocation, SpawnRotation) ;
+		tempProjectile->SetOwner(this); 
+
+	}
+
 }
 
 void APanwBase::HandleDestruction() 
