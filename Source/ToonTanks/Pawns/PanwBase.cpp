@@ -2,6 +2,7 @@
 
 #include "PanwBase.h"
 #include "Components/CapsuleComponent.h"
+#include "Kismet/KismetMathLibrary.h"
 
 // Sets default values
 APanwBase::APanwBase()
@@ -29,10 +30,10 @@ void APanwBase::RotateTurret(FVector LookAtTarget)
 
 	FVector LookAtTargetCleaned = FVector(LookAtTarget.X, LookAtTarget.Y, TurretMesh->GetComponentLocation().Z);
 	FVector StartLocation = TurretMesh->GetComponentLocation();
-	FRotator TurretRotation = FVector(FVector(LookAtTargetCleaned - StartLocation)).Rotation();
+	FRotator TurretRotation = FVector(LookAtTargetCleaned - StartLocation).Rotation();
+	//FRotator TurretRotation = UKismetMathLibrary::FindLookAtRotation(StartLocation, LookAtTargetCleaned);
 
 	TurretMesh->SetWorldRotation(TurretRotation);
-	UE_LOG(LogTemp, Warning, TEXT("Turned"));
 
 }
 
@@ -52,5 +53,25 @@ void APanwBase::HandleDestruction()
 
 	// -- PawnTank - Inform GameMode Player died -> then Hide() all components && stop movement input 
 }
+
+void APanwBase::BeginPlay() 
+{
+	Super::BeginPlay(); 
+}
+
+// Called every frame
+void APanwBase::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+
+}
+
+// Called to bind functionality to input
+void APanwBase::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
+{
+	Super::SetupPlayerInputComponent(PlayerInputComponent);
+
+}
+
 
 

@@ -60,13 +60,13 @@ void APawnTank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 
 void APawnTank::CalculateMoveInput(float Value) 
 {
-    MoveDirection = FVector(Value * MoveSpeed * GetWorld()->DeltaTimeSeconds, 0, 0);
+    MoveDirection = FVector(Value * MoveSpeed * GetWorld()->DeltaTimeSeconds, 0.0f, 0.0f);
 }
 
 void APawnTank::CalculateRotateInput(float Value) 
 {
     float RotateAmount = Value * RotateSpeed * GetWorld()->DeltaTimeSeconds;  
-    FRotator Rotation = FRotator(0, RotateAmount, 0);
+    FRotator Rotation = FRotator(0.0f, RotateAmount, 0.0f);
     RotationDirection = FQuat(Rotation); 
 }
 

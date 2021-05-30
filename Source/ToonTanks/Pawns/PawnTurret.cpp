@@ -32,7 +32,7 @@ void APawnTurret::Tick(float DeltaTime)
         return; 
     }
 
-    Super::RotateTurret(PlayerTank->GetActorLocation());
+   // RotateTurret(PlayerTank->GetActorLocation());
 }
 
 void APawnTurret::CheckFireCondition() 
@@ -49,6 +49,8 @@ void APawnTurret::CheckFireCondition()
         Fire(); 
         UE_LOG(LogTemp, Warning, TEXT("Fire Condition Success"));
     }
+
+    RotateTurret(PlayerTank->GetActorLocation());
     
 }
 
@@ -59,5 +61,12 @@ float APawnTurret::ReturnDistanceToPlayer()
         return 0.0f; 
     }
 
-    return FVector::Dist(PlayerTank->GetActorLocation(), GetActorLocation());
+    float dist = (PlayerTank->GetActorLocation() - GetActorLocation()).Size();
+    return dist; 
+    //return FVector::Dist(PlayerTank->GetActorLocation(), GetActorLocation());
+}
+
+APawnTurret::APawnTurret() 
+{
+    
 }
