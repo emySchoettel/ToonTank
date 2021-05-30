@@ -33,6 +33,9 @@ public:
 	// Sets default values for this pawn's properties
 	APanwBase();
 
+	void PawnDestroyed(); 
+	virtual void HandleDestruction(); 
+
 	virtual void Tick(float DeltaTime) override; 
 
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override; 
@@ -42,8 +45,6 @@ protected :
 	void RotateTurret(FVector LookAtTarget);
 
 	void Fire(); 
-
-	virtual void HandleDestruction(); 
 
 	virtual void BeginPlay() override;
 

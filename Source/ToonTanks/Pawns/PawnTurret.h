@@ -30,6 +30,8 @@ class TOONTANKS_API APawnTurret : public APanwBase
 
 		APawnTurret();
 
+		virtual void HandleDestruction() override; 
+
 		// Called every frame
 		virtual void Tick(float DeltaTime) override;
 
@@ -37,7 +39,5 @@ class TOONTANKS_API APawnTurret : public APanwBase
 
 		// Called when the game starts or when spawned
 		virtual void BeginPlay() override;
-
-		virtual void HandleDestruction() override; 
 
 };

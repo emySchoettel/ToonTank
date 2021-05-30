@@ -27,9 +27,7 @@ void UHealthComponent::BeginPlay()
 }
 
 void UHealthComponent::TakeDamage(AActor * damagedActor, float damage, const UDamageType * damageType, AController * instigatedBy, AActor * damageCauser) 
-{
-	UE_LOG(LogTemp, Warning, TEXT("Damage"));
-	if(damage == 0 || Health <= 0)
+{	if(damage == 0 || Health <= 0)
 	{
 		return; 	
 	}
