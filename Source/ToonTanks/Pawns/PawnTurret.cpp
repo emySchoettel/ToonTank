@@ -32,13 +32,13 @@ void APawnTurret::Tick(float DeltaTime)
         return; 
     }
 
-   // RotateTurret(PlayerTank->GetActorLocation());
+   RotateTurret(PlayerTank->GetActorLocation());
 }
 
 void APawnTurret::CheckFireCondition() 
 {
     //if player == null || is dead then bail !
-    if(!PlayerTank)
+    if(!PlayerTank || !PlayerTank->GetIsPlayerAlive())
     {
         return; 
     }
@@ -47,11 +47,7 @@ void APawnTurret::CheckFireCondition()
     {
         // Fire
         Fire(); 
-        UE_LOG(LogTemp, Warning, TEXT("Fire Condition Success"));
-    }
-
-    RotateTurret(PlayerTank->GetActorLocation());
-    
+    }    
 }
 
 float APawnTurret::ReturnDistanceToPlayer() 

@@ -6,6 +6,7 @@
 #include "GameFramework/Actor.h"
 #include "ProjectileBase.generated.h"
 
+
 class UProjectileMovementComponent;
 
 
@@ -20,8 +21,11 @@ private:
 	UProjectileMovementComponent* projectileMovement;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	UStaticMeshComponent* projectileMesh;
+
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	UParticleSystemComponent* trailComponent;
+	UPROPERTY(EditAnywhere, Category ="Effects")
+	UParticleSystem* HitParticle;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Damage", meta = (AllowPrivateAccess = "true"))
 	TSubclassOf<UDamageType> damageType;
@@ -30,6 +34,15 @@ private:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projectile", meta = (AllowPrivateAccess = "true"))
 	float projectileSpeed = 1300.0f;
+
+	UPROPERTY(EditAnywhere, Category ="Effects")
+	USoundBase* LaunchSound; 
+
+	UPROPERTY(EditAnywhere, Category ="Effects")
+	USoundBase* HitSound; 
+
+	UPROPERTY(EditAnywhere, Category ="Effects")
+	TSubclassOf<UCameraShake> HitShake; 
 
 	UFUNCTION()
 	void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
